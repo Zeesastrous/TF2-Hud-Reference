@@ -41,6 +41,16 @@ If they are set with an "c" before the number, like so:
 ```
 This element will be positioned 50 units from to the right of the center of the screen, and 100 units below the center of the screen. This value can be negative to go left / up from the center as well.
 
+##  Sized positioning
+
+If they are set with a "s" before the number, like so:
+```
+	"xpos" "s0.5"
+	"ypos" "s0.5"
+```
+It is positioned by a percent of the element's size. In this case, it will be moved right exactly half of its height and moved left exactly half of its width, making it exist at the top left of the screen. 
+Sized positioning is more precise than standard positioning, as well as more accurate between different resolutions. This can be useful if several elements are required to be aligned perfectly with one another.
+
 ## Reverse Sized positioning
 
 If they are set with a "rs" before the number, like so:
@@ -58,6 +68,17 @@ If they are set with a "cs" before the number, like so:
 	"ypos" "cs-0.5"
 ```
 They will be positioned like the "c" prefix, but similar to "rs" is based off the size of the element. In this example, it will be half its width and height off from the center, effectively making the element's center be identical to the screen center.
+
+## Positioning proportional to parent
+
+By default, every element is positioned relative to the screen. A child element will be offset by the parent's `xpos` and `ypos` values, but `r` and `c` values will still refer to the screen's size.
+However, if the element has the `"porportionaltoparent"` value set to `1`, it will position itself according to its parent's own size and position.
+```
+	"xpos" "c50"
+	"ypos" "r100"
+	"porportionaltoparent"	"1"
+```
+This element will be positioned 50 units to the left from the center of the parent element, and 100 units from the bottom of the parent element. This also applies to `s`, `rs` and `cs`.
 
 ## Pin to Corner
 
